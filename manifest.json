@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "أوان — تذكير صلاحية الأطعمة والأدوية",
+  "short_name": "أوان",
+  "description": "تابع صلاحية الأطعمة والأدوية وقلّل الهدر.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFF6DC",
+  "theme_color": "#425B9A",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

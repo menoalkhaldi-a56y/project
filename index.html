@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#425B9A">
+<meta name="description" content="أوان — تذكير صلاحية الأطعمة والأدوية">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>أوان — تذكير صلاحية الأطعمة والأدوية</title>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g9:#425B9A;--g6:#2C73AE;--g3:#76C0EC;--g1:#E3F1FB;--tx:#2F4478;--bg:#FFF6DC;--card:#FFFDF4;--ink:#1F2A44;--mut:#5C6580;--line:#E6DEC4;--or:#A85200;--orb:#FFE9C7;--rd:#C0273F;--rdb:#FFDCE1;--okb:#DCEEFA;--ok:#2F4478;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121A2E;--card:#1B2640;--ink:#FFF6DC;--mut:#B5BDD3;--line:#2E3C60;--g9:#425B9A;--g6:#3B6FA8;--g1:#243256;--tx:#CFE6F7;--okb:#1F3A5C;--ok:#9FD2F2;--orb:#4A3114;--or:#F2A24B;--rdb:#4A2030;--rd:#FF9AA8}}
+:root[data-theme="dark"]{--bg:#121A2E;--card:#1B2640;--ink:#FFF6DC;--mut:#B5BDD3;--line:#2E3C60;--g9:#425B9A;--g6:#3B6FA8;--g1:#243256;--tx:#CFE6F7;--okb:#1F3A5C;--ok:#9FD2F2;--orb:#4A3114;--or:#F2A24B;--rdb:#4A2030;--rd:#FF9AA8}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Readex Pro','Segoe UI',Tahoma,sans-serif;font-size:15px;line-height:1.6}
+#app{max-width:600px;margin:0 auto;height:100%;display:flex;flex-direction:column;position:relative;background:var(--bg)}
+main{flex:1;overflow-y:auto;padding:16px 16px 24px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--g6);outline-offset:2px}
+h1{font-size:22px;font-weight:700}h2{font-size:17px;font-weight:600}
+.row{display:flex;align-items:center;gap:10px}.sp{justify-content:space-between}.mut{color:var(--mut);font-size:13px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:22px;color:var(--g9)}
+.logo svg{width:34px;height:34px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo{color:var(--g3)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
+.item{display:flex;gap:12px;align-items:center;margin-bottom:10px;width:100%;text-align:right}
+.img{width:54px;height:54px;border-radius:14px;background:var(--g1);display:grid;place-items:center;font-size:28px;flex:none;border:1px solid #BFDDF3}
+.grow{flex:1;min-width:0}.nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip{display:inline-flex;gap:4px;align-items:center;border-radius:99px;padding:2px 10px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.ok{background:var(--okb);color:var(--ok)}.near{background:var(--orb);color:var(--or)}.exp{background:var(--rdb);color:var(--rd)}
+.bar{width:5px;align-self:stretch;border-radius:5px;flex:none}.bar.ok{background:var(--g6)}.bar.near{background:#E08A2E}.bar.exp{background:var(--rd)}
+.hero{background:var(--g9);color:#FFF6DC;border-radius:24px;padding:18px;margin:14px 0}
+.hero .logo{color:#FFF6DC}
+.search{width:100%;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+.grid{display:grid;gap:10px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.stat{text-align:center}.stat b{display:block;font-size:24px}
+.sec{border-radius:20px;padding:16px;text-align:right;color:#fff;display:block;width:100%}
+.sec.f{background:var(--g6)}.sec.m{background:var(--g9)}.sec b{font-size:28px;display:block}
+.btn{border-radius:14px;padding:12px 18px;font-weight:600;background:var(--g9);color:#FFF6DC;display:inline-flex;gap:8px;justify-content:center;align-items:center}
+.btn.l{background:var(--g3);color:#1B2A55}.btn.o{border:1.5px solid var(--g3);color:var(--tx)}.btn.d{background:var(--rd);color:#fff}.btn.w{width:100%}
+nav{display:flex;justify-content:space-around;align-items:flex-end;background:var(--card);border-top:1px solid var(--line);padding:6px 4px 8px}
+nav button{display:flex;flex-direction:column;align-items:center;gap:0;font-size:11.5px;color:var(--mut);min-width:58px;position:relative;padding:2px 4px}
+nav button span{font-size:21px}nav .on{color:var(--tx);font-weight:700}
+nav .plus{background:var(--g9);color:#fff;border-radius:50%;width:56px;height:56px;margin-top:-22px;justify-content:center;box-shadow:0 4px 12px rgba(66,91,154,.35)}
+.badge{position:absolute;top:-2px;inset-inline-start:30px;background:var(--rd);color:#fff;border-radius:99px;font-size:11px;padding:0 6px}
+.tabs{display:flex;gap:6px;margin:12px 0}.tabs button{flex:1;padding:9px;border-radius:12px;background:var(--g1);font-weight:600;color:var(--tx)}
+.tabs .on{background:var(--g9);color:#fff}
+.fl{display:flex;gap:8px;margin-bottom:12px}.fl select{flex:1;padding:9px;border-radius:12px;border:1px solid var(--line);background:var(--card);min-width:0}
+label{display:block;font-weight:500;margin:12px 0 4px}
+input.f,select.f{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card)}
+.err{color:var(--rd);font-size:13px;margin-top:3px}
+.empty{text-align:center;padding:40px 10px;color:var(--mut)}.empty div{font-size:48px}
+.view{aspect-ratio:4/3;background:#14203A;border-radius:22px;position:relative;overflow:hidden;display:grid;place-items:center;color:#DCEEFA}
+.view video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame{width:70%;height:42%;border:3px solid var(--g3);border-radius:16px;position:relative;z-index:1}
+.laser{position:absolute;inset-inline:0;height:3px;background:var(--g3);box-shadow:0 0 12px var(--g3);animation:ls 1.8s ease-in-out infinite alternate}
+@keyframes ls{from{top:6%}to{top:92%}}
+.ov{position:absolute;inset:0;background:rgba(20,28,50,.55);display:grid;place-items:center;padding:20px;z-index:9}
+.modal{background:var(--card);border-radius:22px;padding:20px;width:100%;max-width:380px}
+.toast{position:fixed;bottom:calc(96px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:568px;padding:12px 16px;border-radius:14px;color:#fff;z-index:20;font-weight:500;text-align:center}
+.toast.s{background:var(--g6)}.toast.e{background:var(--rd)}
+.sw{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);width:100%;text-align:right}
+.tg{width:46px;height:26px;border-radius:99px;background:var(--line);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.tg.on{background:var(--g6)}.tg.on::after{inset-inline-start:23px}
+.spin{width:34px;height:34px;border:4px solid var(--g1);border-top-color:var(--g6);border-radius:50%;animation:sp 1s linear infinite;margin:auto}
+@keyframes sp{to{transform:rotate(360deg)}}
+.unread{border-color:var(--g6);border-width:2px}
+.note{background:var(--g1);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--tx);margin:10px 0}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .note{color:var(--g3)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(min-width:768px){#app{max-width:720px;border-inline:1px solid var(--line)}main{padding:24px 28px}.g3{gap:14px}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let T0=new Date();T0.setHours(0,0,0,0);
+const fmt=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const off=n=>{const d=new Date(T0);d.setDate(d.getDate()+n);return fmt(d)};
+const dleft=e=>Math.round((new Date(e+'T00:00:00')-T0)/864e5);
+const pretty=e=>new Date(e+'T00:00:00').toLocaleDateString('ar-SA-u-ca-gregory-nu-latn',{day:'numeric',month:'long',year:'numeric'});
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const SUBS={food:['ألبان','خضروات','لحوم','معلبات','حبوب','أخرى'],med:['مسكنات','مضادات حيوية','برد وسعال','مكملات','عيون','أخرى']};
+const DB={'6281007011112':{name:'حليب كامل الدسم 1 لتر',cat:'food',sub:'ألبان',emoji:'🥛'},'6281007022220':{name:'زبادي يوناني',cat:'food',sub:'ألبان',emoji:'🥣'},'6281007033339':{name:'أرز بسمتي 2 كجم',cat:'food',sub:'حبوب',emoji:'🍚'},'6281007044448':{name:'جبنة موزاريلا',cat:'food',sub:'ألبان',emoji:'🧀'},'6281007055557':{name:'إيبوبروفين 400 ملغ',cat:'med',sub:'مسكنات',emoji:'💊'},'6281007066666':{name:'فيتامين سي 1000 ملغ',cat:'med',sub:'مكملات',emoji:'🍊'}};
+const SEEDR=[['حليب كامل الدسم 1 لتر','food','ألبان','🥛',2,2],['جبنة شيدر شرائح','food','ألبان','🧀',5,1],['خس أخضر','food','خضروات','🥬',-1,1],['زبادي طبيعي','food','ألبان','🥣',1,4],['أرز بسمتي 5 كجم','food','حبوب','🍚',310,1],['تونة معلبة','food','معلبات','🥫',140,6],['دجاج مجمد','food','لحوم','🍗',38,2],['عسل سدر','food','أخرى','🍯',520,1],['باراسيتامول 500 ملغ','med','مسكنات','💊',24,2],['أموكسيسيلين شراب','med','مضادات حيوية','🧴',-3,1],['شراب السعال','med','برد وسعال','🧪',6,1],['فيتامين د 50000','med','مكملات','💊',95,1],['قطرة عين مرطبة','med','عيون','👁️',3,1]]
+;const mkSeed=()=>SEEDR.map((a,i)=>({id:'d'+i,demo:1,name:a[0],cat:a[1],sub:a[2],emoji:a[3],exp:off(a[4]),qty:a[5],added:off(-10-i)}));
+let S={on:0,name:'',items:mkSeed(),rem:[7,3,1],pf:1,pm:1,push:true,read:{},view:'home',tab:'all',q:'',fs:'all',fsub:'all',sort:'asc',mode:'use',pf:1,pm:1};
+try{const x=localStorage.getItem('awan1');if(x)S=Object.assign(S,JSON.parse(x))}catch(e){}
+S.modal=null;S.busy=false;S.draft=null;S.view=S.on?'home':'onb';S.loading=true;
+const save=()=>{try{localStorage.setItem('awan1',JSON.stringify(Object.fromEntries(['on','name','items','rem','push','read','mode','pf','pm'].map(k=>[k,S[k]]))))}catch(e){}};
+const maxR=()=>Math.max(...(S.rem.length?S.rem:[7]));
+const st=d=>d<0?['exp','منتهي الصلاحية','✕']:d<=maxR()?['near','قريب الانتهاء','⚠']:['ok','صالح','✓'];
+const left=d=>d<0?`منتهي منذ ${-d} يوم`:d==0?'ينتهي اليوم':d==1?'ينتهي غدًا':`متبقي ${d} يوم`;
+const sorted=(a,m='asc')=>[...a].sort((x,y)=>m=='desc'?y.exp.localeCompare(x.exp):m=='new'?y.added.localeCompare(x.added):x.exp.localeCompare(y.exp));
+const item=i=>{const d=dleft(i.exp),s=st(d);return `<button class="card item" data-act="open" data-id="${i.id}"><span class="bar ${s[0]}"></span><span class="img" title="صورة تمثيلية">${i.emoji}</span><span class="grow"><div class="nm">${esc(i.name)}</div><div class="mut">${esc(i.sub)} · الكمية ${i.qty}</div><div class="mut">${pretty(i.exp)}</div></span><span style="text-align:left"><span class="chip ${s[0]}">${s[2]} ${s[1]}</span><div class="mut" style="margin-top:4px">${left(d)}</div></span></button>`};
+const logo=`<span class="logo"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#425B9A"/><path d="M20 9c8 2 11 9 8 16-2 4-6 6-10 5-5-1-7-6-5-11 1-4 4-8 7-10z" fill="#76C0EC"/><circle cx="30" cy="10" r="3.5" fill="#FF95A5"/><circle cx="20" cy="22" r="6" fill="none" stroke="#FFF6DC" stroke-width="2"/><path d="M20 18v4l3 2" stroke="#FFF6DC" stroke-width="2" fill="none" stroke-linecap="round"/></svg>أوان</span>`;
+const alertsList=()=>sorted(S.items.filter(i=>dleft(i.exp)<=maxR()));
+const unread=()=>!S.push?0:alertsList().filter(i=>!S.read[i.id]).length;
+let toastT;const toast=(m,t='s')=>{$$('.toast').forEach(x=>x.remove());const e=document.createElement('div');e.className='toast '+t;e.setAttribute('role','status');e.textContent=(t=='s'?'✓ ':'✕ ')+m;document.body.appendChild(e);clearTimeout(toastT);toastT=setTimeout(()=>e.remove(),2800)};
+const blank=()=>({name:'',cat:'food',sub:'ألبان',emoji:'🍽️',exp:'',qty:1,added:fmt(T0),editId:null,err:{},msg:''});
+const opts=(a,v)=>a.map(x=>`<option ${x==v?'selected':''}>${x}</option>`).join('');
+
+const V={
+onb:()=>`<main><div style="text-align:center;margin:30px 0 20px">${logo}<h1 style="margin-top:18px">كل منتج في أوانه</h1><p class="mut">تابع صلاحية الأطعمة والأدوية في بيتك، وقلّل الهدر.</p></div>
+<div class="tabs"><button class="${S.mode=='use'?'on':''}" data-act="mode" data-m="use">ابدأ مباشرة</button><button class="${S.mode=='acc'?'on':''}" data-act="mode" data-m="acc">إنشاء حساب</button></div>
+<div class="card"><label for="un">اسمك</label><input class="f" id="un" value="${esc(S.name)}" placeholder="مثال: سارة">
+${S.mode=='acc'?`<label for="em">البريد الإلكتروني</label><input class="f" id="em" type="email" dir="ltr" placeholder="name@example.com"><label for="pw">كلمة المرور</label><input class="f" id="pw" type="password" dir="ltr" placeholder="6 أحرف على الأقل">`:''}
+<label>ما الذي تريد متابعته؟</label><div class="row"><label class="row" style="margin:0"><input type="checkbox" id="pf" checked> الأطعمة</label><label class="row" style="margin:0"><input type="checkbox" id="pm" checked> الأدوية</label></div><div class="err" id="oe"></div></div>
+<button class="btn w" style="margin-top:14px" data-act="start">${S.mode=='acc'?'إنشاء الحساب والبدء':'دخول إلى أوان'}</button>
+<p class="mut" style="text-align:center;margin-top:10px">النسخة تجريبية: الحساب محاكاة محلية ولا يُرسل أي بيانات، وكل شيء يُحفظ على جهازك فقط.</p></main>`,
+home:()=>{const it=S.items,fo=it.filter(i=>i.cat=='food'),me=it.filter(i=>i.cat=='med'),nr=a=>a.filter(i=>{const d=dleft(i.exp);return d>=0&&d<=maxR()}).length,ex=it.filter(i=>dleft(i.exp)<0).length,w=n=>it.filter(i=>{const d=dleft(i.exp);return d>=0&&d<=n}).length,top=sorted(it).slice(0,4);
+return `<main><div class="row sp">${logo}<button data-act="go" data-v="alerts" aria-label="التنبيهات" style="font-size:24px;position:relative">🔔${unread()?`<span class="badge" style="inset-inline-start:14px;top:-6px">${unread()}</span>`:''}</button></div>
+<div class="hero"><h1>مرحبًا ${esc(S.name||'بك')} 👋</h1><p style="opacity:.85">${nr(it)?`لديك ${nr(it)} منتجات قريبة الانتهاء، ${ex?`و${ex} منتهية.`:'تفقّدها اليوم.'}`:'كل شيء بخير. لا منتجات قريبة الانتهاء.'}</p>
+<div class="row" style="margin-top:12px"><button class="btn l" data-act="scan">▦ مسح باركود</button><button class="btn o" style="color:#FFF6DC;border-color:#FF95A5" data-act="manual">＋ إضافة منتج</button></div></div>
+<input class="search" id="hq" placeholder="🔍 ابحث عن منتج بالاسم" aria-label="بحث"><div class="grid ${S.pf&&S.pm?'g2':''}" style="margin:14px 0">${S.pf?`<button class="sec f" data-act="cat" data-c="food">🍎 الأطعمة<b>${fo.length}</b><span class="mut" style="color:#FFF6DC">${nr(fo)} قريبة الانتهاء</span></button>`:''}${S.pm?`<button class="sec m" data-act="cat" data-c="med">💊 الأدوية<b>${me.length}</b><span style="color:#DCEEFA;font-size:13px">${nr(me)} قريبة الانتهاء</span></button>`:''}</div>
+<div class="grid g3"><div class="card stat"><b>${it.length}</b><span class="mut">إجمالي المنتجات</span></div><div class="card stat"><b style="color:var(--or)">${nr(it)}</b><span class="mut">⚠ قريبة</span></div><div class="card stat"><b style="color:var(--rd)">${ex}</b><span class="mut">✕ منتهية</span></div></div>
+<div class="card" style="margin:10px 0"><div class="mut" style="margin-bottom:6px">تنتهي خلال</div><div class="grid g3 stat"><div><b>${w(3)}</b><span class="mut">3 أيام</span></div><div><b>${w(7)}</b><span class="mut">7 أيام</span></div><div><b>${w(30)}</b><span class="mut">30 يومًا</span></div></div></div>
+<div class="row sp" style="margin:16px 0 8px"><h2>الأقرب انتهاءً</h2><button class="mut" data-act="go" data-v="list">عرض الكل ◂</button></div>${top.length?top.map(item).join(''):empty()}</main>`},
+list:()=>`<main><h1>المنتجات</h1><div class="tabs">${[['all','الكل'],['food','🍎 الأطعمة'],['med','💊 الأدوية']].map(t=>`<button class="${S.tab==t[0]?'on':''}" data-act="tab" data-t="${t[0]}">${t[1]}</button>`).join('')}</div>
+<input class="search" id="lq" value="${esc(S.q)}" placeholder="🔍 ابحث بالاسم" aria-label="بحث"><div class="fl" style="margin-top:10px"><select data-in="fs" aria-label="الحالة"><option value="all">كل الحالات</option><option value="ok" ${S.fs=='ok'?'selected':''}>صالح</option><option value="near" ${S.fs=='near'?'selected':''}>قريب الانتهاء</option><option value="exp" ${S.fs=='exp'?'selected':''}>منتهي</option></select><select data-in="fsub" aria-label="الفئة"><option value="all">كل الفئات</option>${opts(S.tab=='all'?[...SUBS.food,...SUBS.med.slice(0,5)]:SUBS[S.tab],S.fsub)}</select><select data-in="sort" aria-label="الترتيب"><option value="asc">الأقرب انتهاءً</option><option value="desc" ${S.sort=='desc'?'selected':''}>الأبعد انتهاءً</option><option value="new" ${S.sort=='new'?'selected':''}>الأحدث إضافة</option></select></div><div id="lst"></div></main>`,
+add:()=>`<main><h1>إضافة منتج</h1><p class="mut">اختر الطريقة الأسهل لك</p><div style="margin-top:14px">
+<button class="card item" data-act="scan"><span class="img">▦</span><span class="grow"><div class="nm">مسح الباركود</div><div class="mut">مطابقة الباركود مع قاعدة منتجات تجريبية (محاكاة)</div></span>◂</button>
+<button class="card item" data-act="ocr"><span class="img">📷</span><span class="grow"><div class="nm">تصوير العبوة</div><div class="mut">قراءة التاريخ من الصورة (محاكاة) ثم تأكيده</div></span>◂</button>
+<button class="card item" data-act="manual"><span class="img">✍️</span><span class="grow"><div class="nm">إدخال يدوي</div><div class="mut">اكتب بيانات المنتج بنفسك</div></span>◂</button></div>
+<div class="note">الباركود يحدد المنتج فقط، ولا يحتوي على تاريخ الانتهاء. تاريخ الصلاحية يُقرأ من العبوة أو تدخله أنت.</div></main>`,
+scan:()=>`<main><div class="row sp"><h1>مسح الباركود</h1><button data-act="go" data-v="add" class="btn o">رجوع</button></div><div class="view" style="margin:14px 0"><video id="cam" autoplay playsinline muted></video><div class="frame">${S.busy?'<div class="spin" style="margin-top:20%"></div>':'<div class="laser"></div>'}</div></div>
+<p class="mut" id="camn">وجّه الكاميرا نحو الباركود داخل الإطار.</p><div class="note">⚠ محاكاة: مطابقة المنتج تتم مع قاعدة محلية من 6 منتجات فقط. الربط الحقيقي يحتاج خدمة قاعدة منتجات.</div>
+<button class="btn w" style="margin:10px 0" data-act="sim" ${S.busy?'disabled':''}>${S.busy?'جارٍ التعرّف على المنتج…':'▦ التقاط باركود تجريبي (محاكاة)'}</button>
+<label for="bc">أو اكتب رقم الباركود</label><div class="row"><input class="f" id="bc" dir="ltr" inputmode="numeric" placeholder="6281007011112"><button class="btn" data-act="look">بحث</button></div><div class="err" id="be"></div>
+<button class="btn o w" style="margin-top:12px" data-act="manual">تعذّر المسح؟ أدخل البيانات يدويًا</button></main>`,
+form:()=>{const d=S.draft,e=d.err;return `<main><div class="row sp"><h1>${d.editId?'تعديل المنتج':'مراجعة المنتج'}</h1><button class="btn o" data-act="back">إلغاء</button></div>
+${d.msg?`<div class="note">${d.msg}</div>`:''}<div class="row" style="margin:12px 0">${d.photo?`<img src="${d.photo}" alt="" style="width:72px;height:72px;border-radius:14px;object-fit:cover">`:`<span class="img" style="width:72px;height:72px;font-size:40px">${d.emoji}</span>`}<span class="mut">صورة تمثيلية للمنتج</span></div>
+<label for="f-name">اسم المنتج</label><input class="f" id="f-name" value="${esc(d.name)}">${e.name?`<div class="err">${e.name}</div>`:''}
+<div class="grid g2"><div><label for="f-cat">القسم</label><select class="f" id="f-cat" data-in="dcat"><option value="food" ${d.cat=='food'?'selected':''}>الأطعمة</option><option value="med" ${d.cat=='med'?'selected':''}>الأدوية</option></select></div><div><label for="f-sub">الفئة</label><select class="f" id="f-sub">${opts(SUBS[d.cat],d.sub)}</select></div></div>
+<div class="grid g2"><div><label for="f-exp">تاريخ انتهاء الصلاحية</label><input class="f" type="date" id="f-exp" value="${d.exp}"></div><div><label for="f-qty">الكمية</label><input class="f" type="number" id="f-qty" min="1" max="99" value="${d.qty}"></div></div>
+${e.exp?`<div class="err">${e.exp}</div>`:''}${e.qty?`<div class="err">${e.qty}</div>`:''}
+<button class="btn o w" style="margin-top:12px" data-act="readdate">📷 قراءة التاريخ من صورة العبوة (محاكاة OCR)</button><input type="file" id="ph" accept="image/*" capture="environment" hidden>
+<p class="mut" style="margin-top:6px">تاريخ الإضافة: ${pretty(d.added)}</p><button class="btn w" style="margin-top:14px" data-act="saveitem">${d.editId?'حفظ التعديلات':'حفظ المنتج'}</button></main>`},
+detail:()=>{const i=S.items.find(x=>x.id==S.sel);if(!i)return V.list();const d=dleft(i.exp),s=st(d);return `<main><div class="row sp"><button class="btn o" data-act="backd">▸ رجوع</button><span class="chip ${s[0]}">${s[2]} ${s[1]}</span></div>
+<div style="text-align:center;margin:18px 0"><span class="img" style="width:110px;height:110px;font-size:62px;margin:auto">${i.emoji}</span><h1 style="margin-top:10px">${esc(i.name)}</h1><p class="mut">${i.cat=='food'?'الأطعمة':'الأدوية'} · ${esc(i.sub)}</p></div>
+<div class="hero" style="text-align:center;background:${s[0]=='exp'?'var(--rd)':s[0]=='near'?'#9A4B00':'var(--g9)'}"><div style="font-size:34px;font-weight:700">${d<0?-d:d}</div><div>${d<0?'يومًا منذ الانتهاء':'يومًا متبقيًا'}</div></div>
+<div class="card"><div class="row sp sw" style="border:0;padding:6px 0"><span class="mut">تاريخ الانتهاء</span><b>${pretty(i.exp)}</b></div><div class="row sp sw" style="padding:6px 0"><span class="mut">الكمية</span><b>${i.qty}</b></div><div class="row sp sw" style="border:0;padding:6px 0"><span class="mut">تاريخ الإضافة</span><b>${pretty(i.added)}</b></div></div>
+<div class="grid" style="margin-top:14px"><button class="btn w" data-act="edit">✎ تعديل البيانات</button><button class="btn o w" data-act="chdate">📅 تغيير تاريخ الصلاحية</button><button class="btn d w" data-act="askdel">🗑 حذف المنتج</button></div></main>`},
+alerts:()=>{const a=alertsList();return `<main><div class="row sp"><h1>التنبيهات</h1>${a.length?'<button class="btn o" data-act="readall">تعليم الكل كمقروء</button>':''}</div><div class="note">داخل التطبيق فقط في هذا النموذج. إشعارات الجوال الفعلية تحتاج دعم Push من النظام.</div>
+${S.push?'':'<div class="note">⏸ التنبيهات متوقفة من الإعدادات.</div>'}<p class="mut" style="margin-bottom:10px">التذكير قبل: ${S.rem.sort((x,y)=>y-x).map(n=>n+' أيام').join('، ')||'—'}</p>
+${a.length?a.map(i=>{const d=dleft(i.exp),u=d<=1,r=S.read[i.id];return `<button class="card item ${r?'':'unread'}" data-act="alert" data-id="${i.id}"><span class="img">${u?'⏰':'🔔'}</span><span class="grow"><div class="nm">${r?'':'● '}${esc(i.name)}</div><div class="mut">تاريخ الانتهاء: ${pretty(i.exp)}</div><div class="mut">${left(d)}</div></span>${u?`<span class="chip ${d<0?'exp':'near'}">عاجل ${d<0?'✕':'!'}</span>`:''}</button>`}).join(''):empty('🎉','لا توجد تنبيهات حاليًا','ستظهر هنا المنتجات عند اقتراب انتهائها.')}</main>`},
+settings:()=>`<main><h1>الإعدادات</h1>
+<h2 style="margin:14px 0 6px">الملف الشخصي</h2><div class="card"><label for="sn" style="margin-top:0">الاسم</label><div class="row"><input class="f" id="sn" value="${esc(S.name)}"><button class="btn" data-act="savename">حفظ</button></div></div>
+<h2 style="margin:16px 0 6px">مواعيد التنبيه</h2><div class="card"><div class="mut">أنبّهني قبل الانتهاء بـ</div><div class="tabs">${[7,3,1].map(n=>`<button class="${S.rem.includes(n)?'on':''}" data-act="rem" data-n="${n}">${n==1?'يوم':n+' أيام'}</button>`).join('')}</div>
+<button class="sw" data-act="push"><span>تفعيل التنبيهات داخل التطبيق<br><small class="mut">إشعارات النظام الفعلية تحتاج دعمًا تقنيًا إضافيًا</small></span><span class="tg ${S.push?'on':''}" role="switch" aria-checked="${S.push}"></span></button></div>
+<h2 style="margin:16px 0 6px">تفضيلات التطبيق</h2><div class="card"><button class="sw" data-act="pref" data-k="pf"><span>إظهار الأطعمة في الرئيسية</span><span class="tg ${S.pf?'on':''}" role="switch" aria-checked="${!!S.pf}"></span></button><button class="sw" data-act="pref" data-k="pm" style="border:0"><span>إظهار الأدوية في الرئيسية</span><span class="tg ${S.pm?'on':''}" role="switch" aria-checked="${!!S.pm}"></span></button></div><h2 style="margin:16px 0 6px">الخصوصية والبيانات</h2><div class="card"><p class="mut">بياناتك محفوظة على جهازك ولا تُشارك مع أي طرف.</p><div class="grid" style="margin-top:10px"><button class="btn o w" data-act="deldemo">حذف البيانات التجريبية</button><button class="btn d w" data-act="reset">إعادة ضبط النموذج</button><button class="btn o w" data-act="logout">تسجيل الخروج</button></div></div>
+<p class="mut" style="text-align:center;margin-top:14px">أوان · الإصدار التجريبي 1.0</p></main>`
+};
+function empty(i='📭',t='لا توجد منتجات',s='أضف منتجًا بمسح الباركود أو يدويًا.'){return `<div class="empty"><div>${i}</div><b>${t}</b><p>${s}</p><button class="btn" style="margin-top:12px" data-act="add">＋ إضافة منتج</button></div>`}
+const nz=t=>String(t).replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').toLowerCase();
+function filtered(){const q=S.q.trim();return sorted(S.items.filter(i=>(S.tab=='all'||i.cat==S.tab)&&(!q||nz(i.name+' '+i.sub).includes(nz(q)))&&(S.fs=='all'||st(dleft(i.exp))[0]==S.fs)&&(S.fsub=='all'||i.sub==S.fsub)),S.sort)}
+function paint(){const l=$('#lst');if(l){const a=filtered();l.innerHTML=a.length?a.map(item).join(''):empty('🔎','لا نتائج مطابقة','جرّب تغيير البحث أو الفلاتر.')}}
+const NAV=[['home','🏠','الرئيسية'],['list','📦','المنتجات'],['add','＋','إضافة'],['alerts','🔔','التنبيهات'],['settings','⚙️','الإعدادات']];
+function R(){const a=$('#app');if(S.loading){a.innerHTML=`<main style="display:grid;place-items:center;text-align:center"><div>${logo}<div class="spin" style="margin-top:20px"></div><p class="mut">جارٍ تجهيز منتجاتك…</p></div></main>`;return}
+const v=S.view,sh=!['onb','scan','form'].includes(v);let h=V[v]();
+if(sh)h+=`<nav>${NAV.map(n=>{const on=v==n[0]||(v=='detail'&&n[0]=='list');return n[0]=='add'?`<button class="plus" data-act="go" data-v="add" aria-label="إضافة منتج"><span>＋</span></button>`:`<button class="${on?'on':''}" data-act="go" data-v="${n[0]}"><span>${n[1]}</span>${n[2]}${n[0]=='alerts'&&unread()?`<i class="badge" style="font-style:normal">${unread()}</i>`:''}</button>`}).join('')}</nav>`;
+if(S.modal){const m=S.modal;h+=`<div class="ov"><div class="modal" role="dialog" aria-modal="true">${m.t=='del'?`<h2>حذف المنتج؟</h2><p class="mut" style="margin:8px 0 16px">سيُحذف «${esc(S.items.find(x=>x.id==m.id).name)}» نهائيًا.</p><div class="row"><button class="btn d grow" data-act="del">حذف</button><button class="btn o grow" data-act="close">إلغاء</button></div>`:`<h2>تغيير تاريخ الصلاحية</h2><label for="nd">التاريخ الصحيح</label><input class="f" type="date" id="nd" value="${S.items.find(x=>x.id==m.id).exp}"><div class="err" id="nde"></div><div class="row" style="margin-top:14px"><button class="btn grow" data-act="setdate">حفظ</button><button class="btn o grow" data-act="close">إلغاء</button></div>`}</div></div>`}
+a.innerHTML=h;paint();if(v=='scan')cam();else stopCam()}
+let LK=0,stream,tmr;async function cam(){const n=$('#camn');try{if(!stream){stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});if(S.view!='scan'){stopCam();return}}const v=$('#cam');if(v)v.srcObject=stream;if(window.BarcodeDetector){if(!tmr){const bd=new BarcodeDetector();tmr=setInterval(async()=>{try{if(S.busy||S.view!='scan')return;const r=await bd.detect($('#cam'));if(r[0])lookup(r[0].rawValue)}catch(e){}},700);if(n)n.textContent='الكاميرا تعمل: وجّه الباركود داخل الإطار وسيُقرأ تلقائيًا.'}}else if(n)n.textContent='الكاميرا تعمل، لكن المتصفح لا يقرأ الباركود تلقائيًا. اكتب الرقم أو استخدم زر المحاكاة.'}catch(e){if(n)n.textContent='الكاميرا غير متاحة (تحتاج إذنًا واتصالًا آمنًا HTTPS). اكتب الرقم أو استخدم زر المحاكاة.'}}
+function stopCam(){try{stream&&stream.getTracks().forEach(t=>t.stop())}catch(e){}stream=null;clearInterval(tmr);tmr=null}
+function lookup(v){if(S.busy)return;S.busy=true;const t=++LK;R();setTimeout(()=>{if(S.view!='scan'||t!=LK)return;if(DB[v])fromProd(DB[v],v);else{S.busy=false;S.draft=blank();S.draft.msg='الباركود '+v+' غير موجود في القاعدة التجريبية. أدخل البيانات يدويًا.';go('form');toast('تعذّر التعرّف على المنتج','e')}},900)}
+function go(v){S.view=v;save();R();$('main')&&($('main').scrollTop=0)}
+function sync(){const d=S.draft;if(!d||!$('#f-name'))return;d.name=$('#f-name').value;d.cat=$('#f-cat').value;d.sub=$('#f-sub').value;d.exp=$('#f-exp').value;d.qty=$('#f-qty').value}
+function fromProd(p,bc){S.draft=Object.assign(blank(),p,{msg:bc?`محاكاة: طابقنا الباركود ${bc} مع قاعدة منتجات تجريبية محلية. راجع البيانات وأدخل تاريخ الانتهاء من العبوة.`:''});S.busy=false;go('form')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,id=b.dataset.id;
+if(a=='mode'){S.name=$('#un').value;S.mode=b.dataset.m;R()}
+else if(a=='start'){const n=$('#un').value.trim(),er=$('#oe');if(n.length<2)return er.textContent='اكتب اسمك (حرفان على الأقل).';if(S.mode=='acc'){if(!/^\S+@\S+\.\S+$/.test($('#em').value))return er.textContent='البريد الإلكتروني غير صحيح.';if($('#pw').value.length<6)return er.textContent='كلمة المرور يجب ألا تقل عن 6 أحرف.'}const pf=$('#pf').checked,pm=$('#pm').checked;if(!pf&&!pm)return er.textContent='اختر الأطعمة أو الأدوية على الأقل.';S.pf=pf?1:0;S.pm=pm?1:0;S.name=n;S.on=1;S.loading=true;R();setTimeout(()=>{S.loading=false;go('home');toast(`أهلًا ${n}! هذه بيانات تجريبية يمكنك حذفها من الإعدادات.`)},700)}
+else if(a=='go'){if(b.dataset.v=='list'){S.q='';}go(b.dataset.v)}
+else if(a=='cat'){S.tab=b.dataset.c;S.q='';S.fs='all';S.fsub='all';go('list')}
+else if(a=='tab'){S.tab=b.dataset.t;S.fsub='all';R()}
+else if(a=='open'){S.prev=S.view;S.sel=id;go('detail')}
+else if(a=='backd')go(S.prev&&S.prev!='detail'?S.prev:'list')
+else if(a=='add')go('add')
+else if(a=='scan'){LK++;S.busy=false;go('scan')}
+else if(a=='manual'){S.draft=blank();go('form')}
+else if(a=='ocr'){S.draft=blank();S.draft.msg='اضغط «قراءة التاريخ من صورة العبوة» لالتقاط صورة أو اختيارها (القراءة محاكاة).';go('form')}
+else if(a=='sim'){const k=Object.keys(DB);lookup(Math.random()<.8?k[Math.floor(Math.random()*k.length)]:'9999999999999')}
+else if(a=='look'){const v=$('#bc').value.trim().replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));if(!/^\d{8,13}$/.test(v))return $('#be').textContent='الباركود يجب أن يكون من 8 إلى 13 رقمًا.';lookup(v)}
+else if(a=='back')S.draft&&S.draft.editId?go('detail'):go('add')
+else if(a=='readdate'){sync();$('#ph').click()}
+else if(a=='saveitem'){sync();const d=S.draft,er={};if(d.name.trim().length<2)er.name='اكتب اسم المنتج.';if(!d.exp)er.exp='أدخل تاريخ انتهاء الصلاحية.';else if(dleft(d.exp)>3650||d.exp<'2000')er.exp='التاريخ غير منطقي، تحقق منه.';const q=Number(d.qty);if(!Number.isInteger(q)||q<1||q>99)er.qty='الكمية رقم صحيح من 1 إلى 99.';d.err=er;if(Object.keys(er).length){R();return toast('راجع الحقول المطلوبة','e')}
+const o={name:d.name.trim(),cat:d.cat,sub:d.sub,emoji:d.emoji==='🍽️'&&d.cat=='med'?'💊':d.emoji,exp:d.exp,qty:q};if(d.editId){const it=S.items.find(x=>x.id==d.editId);if(it.exp!=o.exp)delete S.read[it.id];Object.assign(it,o);S.sel=d.editId;go('detail');toast('تم حفظ التعديلات')}else{S.items.push(Object.assign(o,{id:'u'+Date.now(),added:d.added}));go('list');toast('تمت إضافة المنتج')}}
+else if(a=='edit'){const i=S.items.find(x=>x.id==S.sel);S.draft=Object.assign(blank(),i,{editId:i.id});go('form')}
+else if(a=='askdel'){S.modal={t:'del',id:S.sel};R()}
+else if(a=='chdate'){S.modal={t:'date',id:S.sel};R()}
+else if(a=='close'){S.modal=null;R()}
+else if(a=='del'){S.items=S.items.filter(x=>x.id!=S.modal.id);S.modal=null;go('list');toast('تم حذف المنتج')}
+else if(a=='setdate'){const v=$('#nd').value;if(!v||v<'2000'||dleft(v)>3650)return $('#nde').textContent='أدخل تاريخًا صحيحًا.';S.items.find(x=>x.id==S.modal.id).exp=v;delete S.read[S.modal.id];S.modal=null;save();R();toast('تم تحديث تاريخ الصلاحية')}
+else if(a=='alert'){S.read[id]=1;S.prev=S.view;S.sel=id;go('detail')}
+else if(a=='readall'){alertsList().forEach(i=>S.read[i.id]=1);save();R();toast('تم تعليم الكل كمقروء')}
+else if(a=='savename'){const n=$('#sn').value.trim();if(n.length<2)return toast('الاسم قصير جدًا','e');S.name=n;save();toast('تم حفظ الملف الشخصي')}
+else if(a=='rem'){const n=+b.dataset.n;S.rem=S.rem.includes(n)?S.rem.filter(x=>x!=n):[...S.rem,n];if(!S.rem.length){S.rem=[n];toast('اختر موعد تذكير واحدًا على الأقل','e')}save();R()}
+else if(a=='push'){S.push=!S.push;save();R();toast(S.push?'تم تفعيل التنبيهات':'تم إيقاف التنبيهات')}
+else if(a=='pref'){const k=b.dataset.k,o=k=='pf'?'pm':'pf';if(S[k]&&!S[o])return toast('أبقِ قسمًا واحدًا على الأقل','e');S[k]=S[k]?0:1;save();R()}
+else if(a=='deldemo'){S.items=S.items.filter(i=>!i.demo);save();R();toast('تم حذف البيانات التجريبية')}
+else if(a=='reset'){S=Object.assign(S,{items:mkSeed(),rem:[7,3,1],pf:1,pm:1,push:true,read:{},q:'',tab:'all',fs:'all',fsub:'all'});save();R();toast('أُعيد ضبط النموذج')}
+else if(a=='logout'){S.on=0;S.name='';save();go('onb')}
+});
+document.addEventListener('input',e=>{const t=e.target;if(t.id=='lq'){S.q=t.value;paint()}else if(t.id=='hq'){}});
+document.addEventListener('keydown',e=>{if(e.key!='Enter')return;const i=e.target.id;if(i=='hq'){S.q=e.target.value;S.tab='all';go('list')}else if(['un','em','pw'].includes(i))$('[data-act=start]').click();else if(i=='bc')$('[data-act=look]').click()});
+document.addEventListener('change',e=>{if(e.target.id=='ph'){const f=e.target.files[0];e.target.value='';if(!f)return;sync();const d=S.draft;try{d.photo=URL.createObjectURL(f)}catch(x){}d.msg='⏳ جارٍ قراءة التاريخ من الصورة (محاكاة)…';R();setTimeout(()=>{if(S.view!='form'||S.draft!==d)return;if(Math.random()<.65){d.exp=off(30+Math.floor(Math.random()*200));d.msg='محاكاة OCR: وضعنا تاريخًا عشوائيًا ('+pretty(d.exp)+') وليس من صورتك فعلًا. صحّحه ليطابق العبوة.';R();toast('تأكد من التاريخ ثم احفظ')}else{d.msg='محاكاة OCR: تعذّرت قراءة التاريخ بوضوح. أدخله يدويًا في الحقل.';R();toast('لم نتمكن من قراءة التاريخ','e')}},1400);return}const k=e.target.dataset.in;if(!k)return;if(k=='dcat'){sync();const dd=S.draft;dd.sub=SUBS[dd.cat][0];if(dd.emoji=='🍽️'||dd.emoji=='💊')dd.emoji=dd.cat=='med'?'💊':'🍽️';R()}else{S[k]=e.target.value;if(k!='sort'||1)paint()}});
+document.addEventListener('visibilitychange',()=>{const n=new Date();n.setHours(0,0,0,0);if(+n!=+T0){T0=n;if(!S.loading)R()}});
+R();setTimeout(()=>{S.loading=false;R()},600);
+</script>
+<script>
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(err => {
+      console.warn('تعذر تسجيل Service Worker:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
